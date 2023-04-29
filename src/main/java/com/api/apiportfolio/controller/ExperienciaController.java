@@ -43,7 +43,7 @@ public class ExperienciaController {
         iexperienciaService.eliminarExperiencia(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("editar/{id}")
     public Experiencia editarExperiencia(@PathVariable("id") Long id,
                                       @RequestBody Experiencia experiencia) {

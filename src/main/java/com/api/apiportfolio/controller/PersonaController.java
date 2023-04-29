@@ -24,6 +24,7 @@ public class PersonaController {
     @Autowired
     IPersonaService ipersonaService;
     
+    
     @GetMapping("/ver")
     @ResponseBody
     public List<Persona> verPersona() {
@@ -42,12 +43,10 @@ public class PersonaController {
         ipersonaService.eliminarPersona(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("/editar/{id}")
-    public Persona editarPersona(@PathVariable("id") Long id,
-                                      @RequestBody Persona persona) {
+    public Persona editarPersona(@PathVariable("id") Long id, @RequestBody Persona persona) {
         persona.getId();
-        
         ipersonaService.crearPersona(persona);
         return persona;
     }

@@ -4,7 +4,7 @@ import com.api.apiportfolio.service.IEducacionService;
 import com.api.apiportfolio.model.Educacion;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,19 +30,20 @@ public class EducacionController {
         return ieducacionService.verEducacion();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/nuevo")
-    public void crearEstudio(@RequestBody Educacion educacion) {
+    public Educacion crearEstudio(@RequestBody Educacion educacion) {
         ieducacionService.crearEducacion(educacion);
+        return educacion;
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @DeleteMapping("/borrar/{id}")
     public void borrarEstudio(@PathVariable Long id) {
         ieducacionService.eliminarEducacion(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("editar/{id}")
     public Educacion editarEducacion(@PathVariable("id") Long id,
                                       @RequestBody Educacion educacion) {
